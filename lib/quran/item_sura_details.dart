@@ -13,6 +13,7 @@ class ItemSuraDetails extends StatelessWidget {
       style: Theme.of(context).textTheme.titleSmall,
       textAlign: TextAlign.center,
       textDirection: TextDirection.rtl,
+
     );
   }
 }

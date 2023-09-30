@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami/provider/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class TasbehTab extends StatefulWidget {
   @override
@@ -37,15 +39,21 @@ class _TasbehTabState extends State<TasbehTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Center(
       child: Column(
         children: [
+          SizedBox(height: 100,),
           Container(
             child: Padding(
               padding: EdgeInsets.only(left: 30.0),
               child: Transform.translate(
                 offset: Offset(4, 25),
-                child: Image.asset('assets/images/head_of_seb7a.png'),
+                child: Image.asset(
+                    provider.isDarkMode() ?
+                     'assets/images/ssdark.png'
+                   : 'assets/images/head_of_seb7a.png'),
               ),
             ),
           ),
@@ -56,7 +64,9 @@ class _TasbehTabState extends State<TasbehTab> {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  Image.asset('assets/images/body_of_seb7a.png'),
+                  Image.asset(provider.isDarkMode() ?
+                  'assets/images/sdark.png' :
+                      'assets/images/body_of_seb7a.png'),
                 ],
               ),
             ),
@@ -76,14 +86,19 @@ class _TasbehTabState extends State<TasbehTab> {
                   '$_tapCount',
                   style: TextStyle(
                     fontSize: 30.0,
-                    color: Colors.black,
+                    color: provider.isDarkMode() ?
+                    Colors.yellow
+                    : Colors.black
                   ),
                 ),
               ),
               Positioned.fill(
                 child: Transform.scale(
                   scale: 2,
-                  child: Image.asset('assets/images/rectangle.png'),
+                  child: Image.asset(
+                      provider.isDarkMode() ?
+                      'assets/images/drec.png' :
+                      'assets/images/rectangle.png'),
                 ),
               ),
             ],
@@ -92,13 +107,18 @@ class _TasbehTabState extends State<TasbehTab> {
           Stack(
             alignment: Alignment.center,
             children: [
-              Image.asset('assets/images/indicator.png'),
+              Image.asset(
+                  provider.isDarkMode() ?
+                  'assets/images/ddrec.png' :
+                  'assets/images/indicator.png'),
               if (_showText)
                 Text(
                   indicatorTexts[_textIndex],
                   style: TextStyle(
                     fontSize: 30.0,
-                    color: Colors.white,
+                    color:    provider.isDarkMode() ?
+                    Colors.white
+                        :Theme.of(context).primaryColorLight,
                   ),
                 ),
             ],

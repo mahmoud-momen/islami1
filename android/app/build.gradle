@@ -23,6 +23,8 @@ if (flutterVersionName == null) {
 }
 
 android {
+
+
     namespace "com.example.islami"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -49,6 +51,10 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
+        minSdkVersion 21
+
+
     }
 
     buildTypes {
@@ -65,3 +71,5 @@ flutter {
 }
 
 dependencies {}
+
+

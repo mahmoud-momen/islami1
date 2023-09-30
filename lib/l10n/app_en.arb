@@ -5,7 +5,15 @@
 "hadeth":"Hadeth",
 "radio" : "Radio",
 "sura_name" : "Sura_Name",
-"hadeth_name" : "Hadeth_Name"
+"hadeth_name" : "Hadeth_Name",
+  "tasbeh": "Tasbeh",
+  "settings": "Settings",
+  "language": "Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "theme": "Theming",
+  "light": "Light",
+  "dark": "Dark"
 
 
 }

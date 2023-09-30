@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/hadeth/item_hadeth_name.dart';
+import 'package:islami/hadeth/item_hadeth_details.dart';
+import 'package:islami/hadeth/hadeth_details_screen.dart';
+import 'package:islami/hadeth/hadeth_tab.dart';
+import 'package:islami/provider/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethTab extends StatefulWidget {
   @override
@@ -12,6 +17,8 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     if (ahadethList.isEmpty) {
       loadHadethFile();
     }
@@ -19,16 +26,24 @@ class _HadethTabState extends State<HadethTab> {
       children: [
         Expanded(flex: 1, child: Image.asset('assets/images/hadeth_logo.png')),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: provider.isDarkMode()?
+          Theme.of(context).dividerColor
+
+              :  Theme.of(context).primaryColor,
           thickness: 3,
+
         ),
         Text(
           'Hadeth Name',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: provider.isDarkMode()?
+          Theme.of(context).dividerColor
+
+              :  Theme.of(context).primaryColor,
           thickness: 3,
+
         ),
         if (ahadethList.isEmpty)
           Center(
@@ -41,8 +56,12 @@ class _HadethTabState extends State<HadethTab> {
           child: ListView.separated(
             separatorBuilder: (context, index) {
               return Divider(
-                color: Theme.of(context).primaryColor,
-                thickness: 2,
+                color: provider.isDarkMode()?
+                Theme.of(context).dividerColor
+
+                    :  Theme.of(context).primaryColor,
+                thickness: 3,
+
               );
             },
             itemBuilder: (context, index) {
